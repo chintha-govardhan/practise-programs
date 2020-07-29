@@ -54,8 +54,10 @@ def find_min_steps(snakes, ladders, N):
     board_size = N * N
     dice = 6
     board = [-1] * board_size
+
     for snake in snakes:
         board[snake[0]-1] = snake[1]-1
+
     for ladder in ladders:
         board[ladder[0]-1] = ladder[1]-1
 
@@ -95,48 +97,48 @@ def test_prog():
      data = test_data.strip().splitlines()
      N = int(data.pop(0))
      snake_count = int(data.pop(0))
-     snakes = [ map(int, data.pop(0).strip().split()) for i in range(snake_count) ]
+     snakes = [ list(map(int, data.pop(0).strip().split())) for i in range(snake_count) ]
      ladder_count = int(data.pop(0))
-     ladders = [ map(int, data.pop(0).strip().split()) for i in range(ladder_count) ]
+     ladders = [ list(map(int, data.pop(0).strip().split())) for i in range(ladder_count) ]
 
-     print N
-     print snakes
-     print ladders
+     print(N)
+     print(snakes)
+     print(ladders)
 
      min_steps = find_min_steps(snakes, ladders, N)
      if min_steps != -1:
-         print "Minimum steps to win the game: ", min_steps
+         print("Minimum steps to win the game: ", min_steps)
      else:
-         print "Solution not found"
+         print("Solution not found")
 
 
 def main():
 
-    print "*" * 80
-    print "Instructions for the input"
-    print "Enter board dimention in the first line"
-    print "Enter number of snakes in second line"
-    print "Enter snake positions head and tail values in each line"
-    print "Enter number of ladders"
-    print "Enter ladder positions base and top values in each line"
-    print "*" * 80
+    print("*" * 80)
+    print("Instructions for the input")
+    print("Enter board dimention in the first line")
+    print("Enter number of snakes in second line")
+    print("Enter snake positions head and tail values in each line")
+    print("Enter number of ladders")
+    print("Enter ladder positions base and top values in each line")
+    print("*" * 80)
 
     N = int(raw_input())
     snake_count = int(raw_input())
-    snakes = [map(int, raw_input().strip().split()) for i in range(snake_count)]
+    snakes = [list(map(int, raw_input().strip().split())) for i in range(snake_count)]
     ladder_count = int(raw_input())
-    ladders = [map(int, raw_input().strip().split()) for i in range(ladder_count)]
+    ladders = [list(map(int, raw_input().strip().split()))for i in range(ladder_count)]
 
 
-    print N
-    print snakes
-    print ladders
+    print(N)
+    print(snakes)
+    print(ladders)
 
     min_steps = find_min_steps(snakes, ladders, N)
     if min_steps != -1:
-        print "Minimum steps to win the game: ", min_steps
+        print("Minimum steps to win the game: ", min_steps)
     else:
-        print "Solution not found"
+        print("Solution not found")
 
 if __name__ == '__main__':
     test_prog()
