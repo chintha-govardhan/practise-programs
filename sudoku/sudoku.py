@@ -18,7 +18,7 @@ def is_duplicate_exist(entry_list):
     values = [ x for x in entry_list if x != 0 ]
 
     if min(values) < 1 or max(values) > 9:
-        print "ERROR: incorrect values in list ", entry_list
+        print("ERROR: incorrect values in list ", entry_list)
         exit(1)
 
     if (len(set(values)) + empty_count) != 9:
@@ -64,8 +64,6 @@ def find_empty_location(grid):
                  return (row, col)
     return None
 
-
-
 recurrsions = 0
 
 def solve_sudoku(grid):
@@ -92,8 +90,8 @@ def solve_sudoku(grid):
 def print_sudoku(grid):
 
     for i in range(9):
-        data = '\t'.join(map(str, grid[i]))
-        print data
+        data = '\t'.join(list(map(str, grid[i])))
+        print(data)
 
 def log_time(fun):
 
@@ -101,7 +99,7 @@ def log_time(fun):
         start_time = datetime.datetime.now()
         fun(*args, **kwargs)
         end_time = datetime.datetime.now()
-        print "Time taken: ", (end_time - start_time)
+        print("Time taken: ", (end_time - start_time))
     return wrap_fun
 
 @log_time
@@ -110,50 +108,50 @@ def test_prog():
     data = test_data.strip().splitlines()
     grid = []
     for entry in data:
-        grid.append(map(int, entry.split()))
+        grid.append(list(map(int, entry.split())))
 
-    print "Input Sudoku:"
+    print("Input Sudoku:")
     print_sudoku(grid)
-    print "#" * 30
+    print("#" * 30)
     if solve_sudoku(grid):
-        print "Sudoku Solution"
+        print("Sudoku Solution")
         print_sudoku(grid)
     else:
-        print "Solution not found"
+        print("Solution not found")
 
-    print "recurrsions", recurrsions
+    print("recurrsions", recurrsions)
 
 def main():
 
-    print "*" * 80
-    print "Welcome to Sudoku solver"
-    print "Instructions for the input"
-    print "Enter each row in a line and each cell separated by a space"
-    print "Use 0 in place of empty cell"
-    print "*" * 80
+    print("*" * 80)
+    print("Welcome to Sudoku solver")
+    print("Instructions for the input")
+    print("Enter each row in a line and each cell separated by a space")
+    print("Use 0 in place of empty cell")
+    print("*" * 80)
 
-    print "Enter sudoku puzzle"
-    print ""
+    print("Enter sudoku puzzle")
+    print("")
 
     data = []
     for i in range(9):
         row = raw_input()
         row = [ int(x) for x in row.strip().split() ]
         if len(row) != 9:
-            print "Error input: Row should contain exactly 9 entries only"
-            print row
+            print("Error input: Row should contain exactly 9 entries only")
+            print(row)
             exit(1)
         data.append(row)
 
     if not is_valid(data):
-        print "Error: Input puzzle is not valid"
+        print("Error: Input puzzle is not valid")
         exit(1)
 
     if solve_sudoku(data):
-        print "Sudoku Solution"
+        print("Sudoku Solution")
         print_sudoku(data)
     else:
-        print "Solution not found"
+        print("Solution not found")
 
 if __name__ == '__main__':
     test_prog()
