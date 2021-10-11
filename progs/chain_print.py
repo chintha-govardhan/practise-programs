@@ -4,8 +4,8 @@
   7 8 9
 
   1 2 3
-  6 9 8
-  7 4 5
+  8 9 4
+  7 6 5
 """
 from itertools import islice
 
